@@ -4,32 +4,30 @@ import { database } from "./firebase"; // Import the database object
 import GaugeChart from "react-gauge-chart";
 
 export const App = () => {
-  const [humidity, setHumidity] = useState("");
   const [temperature, setTemperature] = useState("");
-  const [openingID, setOpeningID] = useState(null); // For openingID
 
   useEffect(() => {
     const humidityRef = ref(database, "humid");
     const temperatureRef = ref(database, "temp");
     const openingIDRef = ref(database, "openingID"); // Reference to openingID
 
-    const humidityListener = onValue(humidityRef, (snapshot) => {
-      setHumidity(snapshot.val());
-    });
+    // const humidityListener = onValue(humidityRef, (snapshot) => {
+    //   setHumidity(snapshot.val());
+    // });
 
     const temperatureListener = onValue(temperatureRef, (snapshot) => {
       setTemperature(snapshot.val());
     });
 
-    const openingIDListener = onValue(openingIDRef, (snapshot) => {
-      setOpeningID(snapshot.val());
-    });
+    // const openingIDListener = onValue(openingIDRef, (snapshot) => {
+    //   setOpeningID(snapshot.val());
+    // });
 
     // Cleanup function
     return () => {
-      off(humidityRef, "value", humidityListener);
+      // off(humidityRef, "value", humidityListener);
       off(temperatureRef, "value", temperatureListener);
-      off(openingIDRef, "value", openingIDListener); // Clean up openingID listener
+      // off(openingIDRef, "value", openingIDListener); // Clean up openingID listener
     };
   }, []);
 
