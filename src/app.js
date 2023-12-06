@@ -33,7 +33,6 @@ export const App = () => {
     <div>
       <h1>Smart office</h1>
       <div style={{ display: "flex" }}>
-        <h3>Temperature: {temperature && 0}</h3>
         <GaugeChart
           id="gauge-chart3"
           nrOfLevels={30}
