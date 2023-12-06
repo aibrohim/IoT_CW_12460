@@ -7,9 +7,7 @@ export const App = () => {
   const [temperature, setTemperature] = useState("");
 
   useEffect(() => {
-    const humidityRef = ref(database, "humid");
     const temperatureRef = ref(database, "temp");
-    const openingIDRef = ref(database, "openingID"); // Reference to openingID
 
     // const humidityListener = onValue(humidityRef, (snapshot) => {
     //   setHumidity(snapshot.val());
