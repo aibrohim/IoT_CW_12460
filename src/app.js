@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { ref, onValue, off } from "firebase/database";
 import { database } from "./firebase"; // Import the database object
+import GaugeChart from "react-gauge-chart";
 
 export const App = () => {
   const [humidity, setHumidity] = useState("");
@@ -34,10 +35,17 @@ export const App = () => {
 
   return (
     <div>
-      <h1>Realtime Data from Firebase</h1>
-      <p>Humidity: {humidity}</p>
-      <p>Temperature: {temperature}°C</p>
-      <p>Entering Person ID: {openingID !== null ? openingID : "----"}</p>
+      <h1>Smart office</h1>
+      <div style={{ display: "flex" }}>
+        <h3>Temperature: {temperature && 0}</h3>
+        <GaugeChart
+          id="gauge-chart3"
+          nrOfLevels={30}
+          colors={["#FF5F6D", "#FFC371"]}
+          arcWidth={0.3}
+          percent={temperature ? temperature / 100 : 0}
+        />
+      </div>
     </div>
   );
 };
