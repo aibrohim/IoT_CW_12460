@@ -32,7 +32,7 @@ export const App = () => {
   return (
     <div>
       <h1>Smart office</h1>
-      <h2>Temperature at the room</h2>
+      <h2>Temperature at the room: {temperature || 0}</h2>
       <div style={{ display: "flex" }}>
         <GaugeChart
           id="gauge-chart3"
